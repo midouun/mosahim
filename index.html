@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مُساهِم | صانع الفيديو الذكي</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>مُساهِم</h1>
+                <p>اصنع محتواك بحرية</p>
+            </div>
+
+            <div class="settings-group">
+                <h3><i class="fas fa-layer-group"></i> منصة النشر</h3>
+                <div class="platform-selector">
+                    <button class="platform-btn active" data-ratio="16/9" data-w="1920" data-h="1080">
+                        <i class="fab fa-youtube"></i> يوتيوب
+                    </button>
+                    <button class="platform-btn" data-ratio="9/16" data-w="1080" data-h="1920">
+                        <i class="fab fa-tiktok"></i> تيك توك
+                    </button>
+                    <button class="platform-btn" data-ratio="1/1" data-w="1080" data-h="1080">
+                        <i class="fab fa-instagram"></i> انستغرام
+                    </button>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <h3><i class="fas fa-image"></i> الخلفية</h3>
+                <label for="image-upload" class="upload-box">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>اختر صورة من جهازك</span>
+                    <input type="file" id="image-upload" accept="image/*" hidden>
+                </label>
+                <p id="img-status" class="file-status">لم يتم اختيار صورة</p>
+            </div>
+
+            <div class="settings-group">
+                <h3><i class="fas fa-music"></i> الملف الصوتي</h3>
+                <label for="audio-upload" class="upload-box audio-box">
+                    <i class="fas fa-microphone-alt"></i>
+                    <span>اختر ملف صوتي (MP3/WAV)</span>
+                    <input type="file" id="audio-upload" accept="audio/*" hidden>
+                </label>
+                <p id="audio-status" class="file-status">لم يتم اختيار صوت</p>
+            </div>
+
+            <div class="settings-group">
+                <h3><i class="fas fa-cog"></i> الجودة</h3>
+                <select id="quality-select">
+                    <option value="2500000">متوسطة (SD)</option>
+                    <option value="5000000" selected>عالية (HD)</option>
+                    <option value="8000000">فائقة (4K Like)</option>
+                </select>
+            </div>
+
+            <button id="render-btn" class="action-btn">
+                <i class="fas fa-video"></i> إنشاء الفيديو
+            </button>
+        </aside>
+
+        <main class="preview-area">
+            <div class="preview-wrapper">
+                <canvas id="preview-canvas"></canvas>
+                <div id="loader" class="loader hidden">
+                    <div class="spinner"></div>
+                    <p>جاري المعالجة... يرجى الانتظار حتى ينتهي الصوت</p>
+                    <p id="progress-text">0%</p>
+                </div>
+                <div id="download-zone" class="hidden">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>تم تجهيز الفيديو!</h3>
+                    <a id="download-link" class="download-btn" href="#" download="musahem_video.webm">
+                        <i class="fas fa-download"></i> تحميل الفيديو
+                    </a>
+                    <button id="reset-btn" class="text-btn">صنع فيديو آخر</button>
+                </div>
+            </div>
+            
+            <audio id="audio-player" controls hidden></audio>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
